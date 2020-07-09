@@ -4,12 +4,12 @@
 <h2>Utilisateur</h2>
 <form action="./target_test" method="post">
     <div>
-        <label for="name">Nom :</label>
-        <input type="text" id="name" name="user_name">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom">
     </div>
     <div>
         <label for="prenom">Prenom</label>
-        <input type="text" id="mail" name="user_mail">
+        <input type="text" id="prenom" name="prenom">
     </div>
 <div class="button">
         <button type="submit">Envoyer les donnees</button>

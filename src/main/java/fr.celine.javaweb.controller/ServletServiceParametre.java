@@ -16,6 +16,8 @@ public class ServletServiceParametre extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
         final ServletContext servletContext = req.getServletContext();
         final RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/login.jsp");
         requestDispatcher.forward(req, resp);
