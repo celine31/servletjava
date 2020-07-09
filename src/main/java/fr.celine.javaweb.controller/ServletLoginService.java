@@ -19,6 +19,26 @@ public class ServletLoginService extends HttpServlet {
         String prenom = req.getParameter("prenom");
        //  req.setAttribute(LOGIN_TIME_PARAMETER_NAME, loginTime);
 
+        Account userAccount = DataDAO.findUser(nom, prenom);
+
+        if (userAccount == null) {
+            String errorMessage = "Invalid nom or prenom";
+
+            req.setAttribute("errorMessage", errorMessage);
+
+            RequestDispatcher dispatcher //
+                    = this.getServletContext().getRequestDispatcher("/login.jsp");
+
+            dispatcher.forward(req, resp);
+            return;
+        }
+
+
+
+
+
+
+
         // Redirection vers la vue JSP
         final ServletContext servletContext = req.getServletContext();
         final RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(DASHBOARD_JSP_VIEW);
