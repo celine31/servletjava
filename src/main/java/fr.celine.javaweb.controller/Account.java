@@ -1,7 +1,10 @@
 package fr.celine.javaweb.controller;
 
 public class Account {
-
+    public Account(String nom, String prenom) {
+        this.nom = nom;
+        this.prenom = prenom;
+    }
 
     private String nom;
     private String prenom;

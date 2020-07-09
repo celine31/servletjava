@@ -10,8 +10,17 @@ import java.io.IOException;
 
 public class ServletLoginService extends HttpServlet {
 
+
     private static final String DASHBOARD_JSP_VIEW = "/target_test.jsp";
     //private static final String LOGIN_TIME_PARAMETER_NAME = "";
+
+    private MockDataDao mockDataDao;
+
+    @Override
+    public void init() throws ServletException {
+        this.mockDataDao =new MockDataDao();
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //on recupère les valeurs du formulaire
@@ -19,7 +28,7 @@ public class ServletLoginService extends HttpServlet {
         String prenom = req.getParameter("prenom");
        //  req.setAttribute(LOGIN_TIME_PARAMETER_NAME, loginTime);
 
-        Account userAccount = DataDAO.findUser(nom, prenom);
+        Account userAccount = mockDataDao.findUser(nom);
 
         if (userAccount == null) {
             String errorMessage = "Invalid nom or prenom";
@@ -30,13 +39,8 @@ public class ServletLoginService extends HttpServlet {
                     = this.getServletContext().getRequestDispatcher("/login.jsp");
 
             dispatcher.forward(req, resp);
-            return;
+
         }
-
-
-
-
-
 
 
         // Redirection vers la vue JSP
